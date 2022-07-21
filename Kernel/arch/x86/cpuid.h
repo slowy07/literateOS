@@ -42,4 +42,38 @@ enum {
   CPUID_EDX_APIC = 1 << 9,
   CPUID_EDX_SEP = 1 << 11,
   CPUID_EDX_MTRR = 1 << 12,
+  CPUID_EDX_PGE = 1 << 13,
+  CPUID_EDX_MCA = 1 << 14,
+  CPUID_EDX_CMOV = 1 << 15,
+  CPUID_EDX_PAT = 1 << 16,
+  CPUID_EDX_PSE36 = 1 << 17,
+  CPUID_EDX_PSN = 1 << 18,
+  CPUID_EDX_CLF = 1 << 19,
+  CPUID_EDX_DTES = 1 << 21,
+  CPUID_EDX_ACPI = 1 << 22,
+  CPUID_EDX_MMX = 1 << 23,
+  CPUID_EDX_FXSR = 1 << 24,
+  CPUID_EDX_SSE = 1 << 25,
+  CPUID_EDX_SSE2 = 1 << 26,
+  CPUID_EDX_SS = 1 << 27,
+  CPUID_EDX_HTT = 1 << 28,
+  CPUID_EDX_TM1 = 1 << 29,
+  CPUID_EDX_IA64 = 1 << 30,
+  CPUID_EDX_PBE = 1 << 31
+};
+
+typedef struct {
+  // cpu vendor string
+  char vendor_sstring[12];
+
+  // acts as terminator for the terminator string
+  char null_terminator = '\0';
+
+  // CPU ecx and edx
+  uint32_t features_ecx;
+  uint32_t features_edx;
+}__attribute__((packed)) cpuid_info_t;
+
+namespace CPU {
+  cpuid_info_t GetCPUInfo();
 }
