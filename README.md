@@ -1,3 +1,3 @@
 # literateOS
 
-on development
+on development (coming soon!)
